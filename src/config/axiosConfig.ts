@@ -1,9 +1,9 @@
-import { API_BASE_URL, ENDPOINTS } from "./apiConfig";
+import { ENDPOINTS } from "./apiConfig";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: API_BASE_URL,
-    withCredentials: true,   // ← sends cookies automatically (accessToken, refreshToken)
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+    withCredentials: true,
     headers: {
         "Content-Type": "application/json",
     },
