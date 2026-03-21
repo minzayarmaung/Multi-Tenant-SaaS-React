@@ -9,6 +9,7 @@ import type { SystemAdminDashboardResponse }  from "../dto/response/SystemAdminD
 import type { CompanyAdminDashboardResponse } from "../dto/response/CompanyAdminDashboardResponse";
 import type { UserDashboardResponse }         from "../dto/response/UserDashboardResponse";
 import Sidebar from "../components/Sidebar";
+import type { HRDashboardResponse } from "../dto/response/HRDashboardResponse";
 
 const STATUS_COLORS: Record<string, string> = {
     NEW:       "#3b82f6",
@@ -81,6 +82,9 @@ const DashboardPage = () => {
                             )}
                             {user?.role === Role.USER && (
                                 <UserStats data={data as UserDashboardResponse} />
+                            )}
+                            {user?.role === Role.HR && (
+                                <HRStats data={data as HRDashboardResponse} />  
                             )}
                         </div>
 
@@ -156,6 +160,28 @@ const UserStats = ({ data }: { data: UserDashboardResponse }) => (
                   icon={<CheckIcon />}   color="green" />
     </>
 );
+
+const HRStats = ({ data }: {data: HRDashboardResponse}) => (
+    <>
+        <StatCard label="Total Employees" value={data.totalUsers}
+                icon={< UsersIcon />} color="purple" />
+
+        <StatCard label="Total Leads" value={data.totalLeads}
+                icon={< LeadsIcon />} color="blue" />
+        
+        <StatCard label="Open Leads" value={data.totalLeads}
+                icon={< ClockIcon />} color="orange" />
+
+        <StatCard label="Open Leads"     value={data.openLeads}
+                icon={<ClockIcon />}   color="green" />
+        
+        <StatCard label="Closed Leads"   value={data.closedLeads}
+                icon={<CheckIcon />}   color="red" />
+                
+        <StatCard label="Unassigned Leads" value={data.unassignedLeads}
+                icon={<ClockIcon />}   color="purple" />
+    </>
+)
 
 // ── Icons ─────────────────────────────────────────────────────
 const BuildingIcon = () => (
