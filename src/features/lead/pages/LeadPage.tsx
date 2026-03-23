@@ -132,6 +132,7 @@ const LeadPage = () => {
                         <LeadTable
                             leads={leads}
                             isCompanyAdmin={isCompanyAdmin}
+                            userRole={user?.role}
                             onView={openView}
                             onEdit={openEdit}
                             onAssign={(lead) => setAssigning(lead)}
