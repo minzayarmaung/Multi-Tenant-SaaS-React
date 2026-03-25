@@ -51,6 +51,7 @@ const UserPage = () => {
                 name: data.name,
                 email: data.email,
                 password: data.password || undefined,
+                role: data.role
             });
         } else if (isSystemAdmin) {
             await UserService.createCompanyAdmin({

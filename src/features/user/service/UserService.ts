@@ -39,7 +39,7 @@ const UserService = {
         return response.data;
     },
 
-    update: async (id: number, data: { name: string; email: string; password?: string })
+    update: async (id: number, data: { name: string; email: string; password?: string; role: Role})
         : Promise<ApiResponse<UserResponse>> => {
         const response = await axiosInstance.patch(ENDPOINTS.USERS.BY_ID(id), data);
         return response.data;
